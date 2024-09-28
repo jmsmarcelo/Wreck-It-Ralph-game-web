@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(../img/wall.png);
+}
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border-bottom: 5px solid #ffd700;
+}
+.menu * :first-child {
+    color: #ff0000;
+}
+.menu-time :first-child, .menu-score :first-child {
+    margin-bottom: 10px;
+}
+.menu-lives {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.panel {
+    display: flex;
+    position: relative;
+    width: max-content;
+    margin: 1rem auto auto auto;
+    box-shadow: 1px 1px 3px #000000;
+    align-items: center;
+    justify-content: center;
+}
+.square {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #000000;
+    background-color: #7fffd4;
+    cursor: grabbing;
+}
+.enemy {
+    background-image: url(../img/ralph.png);
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+#popup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #ff0000;
+    text-shadow: 3px 3px 2px #000000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#popup-btn {
+    padding: 7px 14px;
+    border: 1px inset #000000;
+    border-radius: 5px;
+    box-shadow: 3px 3px 2px #000000;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 460px) {
+    .square {
+        width: 32vw;
+    }
+    h2 {
+        font-size: 27px;
+    }
+    .menu h2 {
+        font-size: 18px;
+    }
+}
+@media screen and (max-height: 460px) {
+    .square {
+        width: 32vh;
+    }
+}
