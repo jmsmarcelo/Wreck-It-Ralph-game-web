@@ -11,7 +11,8 @@ const state = {
         gameVolocity: 1000,
         result: 0,
         currentTime: 0,
-        lives: 0
+        lives: 0,
+        randomNumber: 0
     },
     actions: {
         timerId: null,
@@ -51,11 +52,8 @@ function setPopup(display='none', title='Wreck-It Ralph', btnName='Play') {
     state.views.popup[2].textContent = btnName;
 }
 function randomSquare() {
-    state.views.squares.forEach(square => {
-        square.classList.remove('enemy');
-    });
-    let randomNumber = Math.floor(Math.random() * 9);
-    let randomView = state.views.squares[randomNumber];
+    state.views.squares[state.values.randomNumber].classList.remove('enemy');
+    let randomView = state.views.squares[(state.values.randomNumber = Math.floor(Math.random() * 9))];
     randomView.classList.add('enemy');
 }
 function moveEnemy() {
