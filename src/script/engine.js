@@ -8,7 +8,7 @@ const state = {
         popup: document.querySelectorAll('[id^="popup"]')
     },
     values: {
-        gameVolocity: 1000,
+        gameVelocity: 1000,
         result: 0,
         currentTime: 0,
         lives: 0,
@@ -43,12 +43,21 @@ function checkStatus() {
     if(state.values.currentTime <= 0 || state.values.lives <= 0) {
         clearInterval(state.actions.countDowwnTimerId);
         clearInterval(state.actions.timerId);
-        setPopup('flex', 'Game Over', 'Play Again');
+        let title = '', titleColor = '';
+        if(state.values.currentTime <= 0 && state.values.lives > 0 && state.values.result > 0) {
+            title = 'You Winer';
+            titleColor = '#00b100';
+        } else {
+            title = 'Game Over';
+            titleColor = '#ff0000';
+        }
+        setPopup('flex', title, titleColor, 'Play Again');
     }
 }
-function setPopup(display='none', title='Wreck-It Ralph', btnName='Play') {
+function setPopup(display='none', title='Wreck-It Ralph', titleColor='#ff0000', btnName='Play') {
     state.views.popup[0].style.display = display;
     state.views.popup[1].textContent = title;
+    state.views.popup[1].style.color = titleColor;
     state.views.popup[2].textContent = btnName;
 }
 function randomSquare() {
@@ -59,7 +68,7 @@ function randomSquare() {
 function moveEnemy() {
     clearInterval(state.actions.timerId);
     randomSquare();
-    state.actions.timerId = setInterval(randomSquare, state.values.gameVolocity);
+    state.actions.timerId = setInterval(randomSquare, state.values.gameVelocity);
 }
 function initialize() {
     state.views.timeLeft.textContent = state.values.currentTime;
